@@ -75,7 +75,7 @@ gulp.task('cssminify', () =>{
 //HTML 파일을 minify
 gulp.task('brominifyhtml', () =>{
     return gulp.src('src/html/*.html') //src 폴더 아래의 모든 html 파일을
-        .pipe(htmlminify()) //minify 해서
+        .pipe(htmlminify()) //minify(경령화) 해서
         .pipe(gulp.dest('dist/html')) //dist 폴더에 저장
         .pipe(browserSync.reload({stream:true})); //broserSync로 브라우저에 반영
 });
@@ -93,7 +93,7 @@ gulp.task('brouglify', () =>{
 gulp.task('brominifycss', () =>{
     return gulp.src('src/css/*.css') //src 폴더 아래의 모든 css 파일을
         .pipe(concat('main.css')) //병합하고
-        .pipe(cssminify()) //minify 해서
+        .pipe(cssminify()) //minify(경량화) 해서
         .pipe(gulp.dest('dist/css')) //dist 폴더에 저장
         .pipe(browserSync.reload({stream:true})); //browserSync 로 브라우저에 반영
 });

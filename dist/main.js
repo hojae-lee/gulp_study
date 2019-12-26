@@ -1,0 +1,1 @@
+window.onload=function(){alert("안녕하세요")};var Aaa=function(){console.log("Hello Aaa")};function Bbb(){console.log("안녕하세요")}

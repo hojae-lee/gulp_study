@@ -99,6 +99,12 @@ gulp.task('brominifycss', () =>{
 });
 
 //파일 변경 감지
+/*
+    gulp.watch
+    gulp.watch는 첫번째 파라미터에서 변경 감지를 해야하는 대상을 지정한다.
+    두번째 파라미터는 변경이 감지되었을 때 실행할 task를 지정한다. 배열 형태로 여러개의 task 명을 넣어주면 변경이 일어
+    날 때마다 해당 task 들을 자동으로 실행해주게 된다.
+*/
 gulp.task('browatch', () =>{
     gulp.watch('src/html/*.html', gulp.series('brominifyhtml'));
     gulp.watch('src/*.js', gulp.series('brouglify'));

@@ -1,3 +1,4 @@
+```js
 //gulp는 node.js 기반의 task runner 입니다. 반복적인 귀찮은 작업들이나 프론트엔드 빌드에 필요한 작업들을 gulp를 통해 쉽게 처리 할 수 있습니다.
 //요청 후 결과를 한 번에 받는 방식이 아닌 스트림기반의 방식으로 이벤트마다 전달받는 방식을 이용하고 있습니다. 자바스크립트 자동화 빌드 시스템 입니다.
 
@@ -123,3 +124,4 @@ gulp.task('server', gulp.series(gulp.parallel(/*'brominifyhtml',*/'brouglify'/*,
 }));
 
 gulp.task('start', gulp.series(gulp.parallel('server', 'browatch')));
+```

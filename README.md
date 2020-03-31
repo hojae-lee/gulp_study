@@ -11,7 +11,7 @@
     * express --view=pug myapp 구조자동생성
 
 * babel설치
-    * npm install --save-dev @babel/core @babel/cli //babel-core babel-cli 설치
+    * npm install --save-dev @babel/core @babel/cli => //babel-core babel-cli 설치
 
 * gulp //설치 무조건 전역에... 안하면 난리난다 나중에
     * npm install gulp-cli --global

@@ -3,6 +3,19 @@
 1. 자바스크립트 빌드 자동화 툴이다. (gulp.js) 
 2. js파일을 수정 할 때 마다 서버를 재시작 할 수 있다.
 
+* package.json 생성
+    * npm init -y // package.json 생성
+
+* express설치 // 안해도 무관.
+    * npm install express-generator -g
+    * express --view=pug myapp 구조자동생성
+
+* babel설치
+    * npm install --save-dev @babel/core @babel/cli //babel-core babel-cli 설치
+
+* gulp //설치 무조건 전역에... 안하면 난리난다 나중에
+    * npm install gulp-cli --global
+
 ```js
 //gulp는 node.js 기반의 task runner 입니다. 반복적인 귀찮은 작업들이나 프론트엔드 빌드에 필요한 작업들을 gulp를 통해 쉽게 처리 할 수 있습니다.
 //요청 후 결과를 한 번에 받는 방식이 아닌 스트림기반의 방식으로 이벤트마다 전달받는 방식을 이용하고 있습니다. 자바스크립트 자동화 빌드 시스템 입니다.

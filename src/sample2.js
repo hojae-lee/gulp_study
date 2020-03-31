@@ -1,3 +1,4 @@
 function Bbb(){
-    console.log("안녕하세요");
+    const B = 1;
+    console.log(B);
 }

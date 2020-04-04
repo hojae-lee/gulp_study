@@ -123,3 +123,5 @@ gulp.task('server', gulp.series(gulp.parallel(/*'brominifyhtml',*/'brouglify'/*,
 }));
 
 gulp.task('start', gulp.series(gulp.parallel('server', 'browatch')));
+
+//테스트

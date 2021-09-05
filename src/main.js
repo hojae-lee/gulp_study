@@ -1,7 +1,6 @@
-window.onload = function() {
-    alert("안녕하세요");
-    var jbBtn = document.createElement( 'button' );
-    var jbBtnText = document.createTextNode( 'Click' );
-    jbBtn.appendChild( jbBtnText );
-    document.body.appendChild( jbBtn );
+const msgFunc = () => {
+	const msg = 'Hello, Gulp Test';
+	document.getElementById('msg').textContent = msg;
 }
+
+msgFunc();

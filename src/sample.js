@@ -1,3 +1,2 @@
-const Aaa = function(){
-    console.log("Hello Aaa");
-}
+// es6
+const Aaa = () => console.log("Hello Aaa");

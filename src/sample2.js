@@ -1,4 +1,5 @@
-function Bbb(){
-    const B = 1;
-    console.log(B);
+// es5
+function Bbb() {
+  var B = 1;
+  console.log(B);
 }

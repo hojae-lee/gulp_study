@@ -3,6 +3,8 @@
 1. 자바스크립트 빌드 자동화 툴이다. (gulp.js) 
 2. js파일을 수정 할 때 마다 서버를 재시작 할 수 있다.
 
+clone 받을시 npm insatll 또는 yarn 후에 gulp start를 하면 실행 할 수 있음. 안될시 아래 babel과 gulp를 설치해주길 바람.
+
 * package.json 생성
     * npm init -y // package.json 생성
 

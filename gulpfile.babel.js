@@ -18,24 +18,24 @@ import htmlminify from 'gulp-minify-html';
 import browserSync from 'browser-sync';
 
 //gulp.task 메서드는 새로운 gulp task를 등록해주는 역할을 한다. 첫번쨰 파라미터에 task 이름, 두번째 파라미터에 실제 작업할 내용이 함수가 위치하게 된다.
-// gulp.task('default', () =>{
+// gulp.task('default', () => {
 //     return console.log("Gulp is running");
 // });
 
-gulp.task('hello', () =>{
-    return console.log("hello world!");
+gulp.task('hello', () => {
+	return console.log("hello world!");
 });
 
-gulp.task('world', () =>{
-    return console.log("World");
+gulp.task('world', () => {
+	return console.log("World");
 });
 
 //자바스크립트 경량화
 //자바스크립트 파일에 포함된 주석, 공백 등을 제거하고 변수명 등을 짧게 바꾸는 등의 작업을 거쳐 용량을 줄이고 보다 빠르게 해석할 수 있도록 도와주게 합니다.
-gulp.task('uglifyes', () =>{
-    return gulp.src('src/*.js') // src 폴더 아래의 모든 js파일을
-            .pipe(uglifyes()) // minify(경량화) 해서
-            .pipe(gulp.dest('dist')); // dist 폴더에 저장.
+gulp.task('uglifyes', () => {
+	return gulp.src('src/*.js') // src 폴더 아래의 모든 js파일을
+		.pipe(uglifyes()) // minify(경량화) 해서
+    .pipe(gulp.dest('dist')); // dist 폴더에 저장.
 });
 
 /*
@@ -43,7 +43,7 @@ gulp.task('uglifyes', () =>{
     이런 경우를 위해 파일에 변경이 있을 때마다 변경을 감지해서 task를 실행할 수 있는 기능을 gulp.watch 라는 메서드로 제공 해주고 있습니다.
 */
 
-gulp.task('watch',() =>{
+gulp.task('watch',() => {
     gulp.watch('src/*.js', gulp.series('uglifyes'));
 });
 
@@ -52,19 +52,19 @@ const demo = gulp.series(gulp.parallel('uglifyes', 'watch'));
 gulp.task('default', demo);
 
 // minify된 파일들을 하나의 파일로 만들어서 배포하는 방법.
-gulp.task('concat', () =>{
-    return gulp.src('src/*.js') // src 폴더 아래의 모든 js파일을
-            .pipe(concat('main.js')) // main.js라는 파일명으로 모두 병합한 뒤에
-            // .pipe(uglify()) // minify(경량화) 해서
-            .pipe(uglifyes()) // minify(경량화) 해서
-            .pipe(gulp.dest('total')); // total 폴더에 저장.
+gulp.task('concat', () => {
+	return gulp.src('src/*.js') // src 폴더 아래의 모든 js파일을
+    .pipe(concat('main.js')) // main.js라는 파일명으로 모두 병합한 뒤에
+    // .pipe(uglify()) // minify(경량화) 해서
+    .pipe(uglifyes()) // minify(경량화) 해서
+    .pipe(gulp.dest('total')); // total 폴더에 저장.
 });
 
 //css파일 minify
-gulp.task('cssminify', () =>{
-    return gulp.src('src/css/main.css') // src/css 폴더의 main.css 파일을
-        .pipe(cssminify()) // minify해서
-        .pipe(gulp.dest('dist/css')); // dist/css 폴더에 저장
+gulp.task('cssminify', () => {
+  return gulp.src('src/css/main.css') // src/css 폴더의 main.css 파일을
+    .pipe(cssminify()) // minify해서
+    .pipe(gulp.dest('dist/css')); // dist/css 폴더에 저장
 });
 
 //BrowserSync로 미니 서버를 띄워서 작업하기
@@ -76,29 +76,29 @@ gulp.task('cssminify', () =>{
 
 // 필요 한것은 여기.
 //HTML 파일을 minify
-gulp.task('brominifyhtml', () =>{
-    return gulp.src('src/html/*.html') //src 폴더 아래의 모든 html 파일을
-        .pipe(htmlminify()) //minify(경령화) 해서
-        .pipe(gulp.dest('dist/html')) //dist 폴더에 저장
-        .pipe(browserSync.reload({stream:true})); //broserSync로 브라우저에 반영
+gulp.task('brominifyhtml', () => {
+  return gulp.src('src/html/*.html') //src 폴더 아래의 모든 html 파일을
+    .pipe(htmlminify()) //minify(경령화) 해서
+    .pipe(gulp.dest('dist/html')) //dist 폴더에 저장
+    .pipe(browserSync.reload({stream:true})); //broserSync로 브라우저에 반영
 });
 
 //javascript 파일을 minify uglifyes()로 자바스크립트를 통합시키고 경량화함
-gulp.task('brouglify', () =>{
-    return gulp.src('src/*.js')
-        .pipe(concat('main.js'))
-        .pipe(uglifyes())
-        .pipe(gulp.dest('dist'))
-        .pipe(browserSync.reload({stream:true}));
+gulp.task('brouglify', () => {
+  return gulp.src('src/*.js')
+    .pipe(concat('main.js'))
+    .pipe(uglifyes())
+    .pipe(gulp.dest('dist'))
+    .pipe(browserSync.reload({stream:true}));
 });
 
 //CSS 파일을 minify
-gulp.task('brominifycss', () =>{
-    return gulp.src('src/css/*.css') //src 폴더 아래의 모든 css 파일을
-        .pipe(concat('main.css')) //병합하고
-        .pipe(cssminify()) //minify(경량화) 해서
-        .pipe(gulp.dest('dist/css')) //dist 폴더에 저장
-        .pipe(browserSync.reload({stream:true})); //browserSync 로 브라우저에 반영
+gulp.task('brominifycss', () => {
+  return gulp.src('src/css/*.css') //src 폴더 아래의 모든 css 파일을
+    .pipe(concat('main.css')) //병합하고
+    .pipe(cssminify()) //minify(경량화) 해서
+    .pipe(gulp.dest('dist/css')) //dist 폴더에 저장
+    .pipe(browserSync.reload({stream:true})); //browserSync 로 브라우저에 반영
 });
 
 //파일 변경 감지
@@ -108,20 +108,21 @@ gulp.task('brominifycss', () =>{
     두번째 파라미터는 변경이 감지되었을 때 실행할 task를 지정한다. 배열 형태로 여러개의 task 명을 넣어주면 변경이 일어
     날 때마다 해당 task 들을 자동으로 실행해주게 된다.
 */
-gulp.task('browatch', () =>{
-    // gulp.watch('src/html/*.html', gulp.series('brominifyhtml'));
-    gulp.watch('src/*.js', gulp.series('brouglify'));
-    // gulp.watch('src/css/*.css', gulp.series('brominifycss'));
+gulp.task('browatch', () => {
+	// index.html 추가.
+  gulp.watch('index.html', gulp.series('brominifyhtml'));
+  // gulp.watch('src/html/*.html', gulp.series('brominifyhtml'));
+  gulp.watch('src/*.js', gulp.series('brouglify'));
+  gulp.watch('src/css/*.css', gulp.series('brominifycss'));
 });
 
-gulp.task('server', gulp.series(gulp.parallel(/*'brominifyhtml',*/'brouglify'/*,'brominifycss'*/), ()=>{
-    return browserSync.init({
-        server: {
-            baseDir: './'
-        }
-    });
+gulp.task('server', gulp.series(gulp.parallel('brominifyhtml', 'brouglify','brominifycss'), ()=> {
+  return browserSync.init({
+  	server: {
+    	baseDir: './'
+    }
+  });
 }));
 
+//테스트 (gulp start로 시작)
 gulp.task('start', gulp.series(gulp.parallel('server', 'browatch')));
-
-//테스트

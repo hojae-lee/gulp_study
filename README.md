@@ -6,6 +6,7 @@
 clone 받을시 npm insatll 또는 yarn 후에 gulp start를 하면 실행 할 수 있음. 안될시 아래 babel과 gulp를 설치해주길 바람. <br/>
 es6를 es5로 트랜스파일링 지원. <br/>
 자바스크립트를 경량화 및 난독화 지원. <br/>
+브라우저 싱크 지원. <br/>
 
 gulp start 하면 빌드를 시작. (dist/main.js)
 

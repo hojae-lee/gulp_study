@@ -93,9 +93,9 @@ gulp.task('brouglify', () => {
   return gulp.src('src/*.js')
     .pipe(concat('main.js'))
     .pipe(uglifyes())
-    // es6 => es5
+    // es6 => es5 (트랜스파일링)
     .pipe(babel())
-    // 난독화 추가
+    // 난독화 추가 (각 옵션별로 제공함.)
     .pipe(obfuscator({
       compact: true
     }))

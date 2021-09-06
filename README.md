@@ -1,9 +1,13 @@
-# gulp를 이용한 번들링 및 브라우저 
+# gulp를 이용한 번들링 및 브라우저
 ## gulp란
-1. 자바스크립트 빌드 자동화 툴이다. (gulp.js) 
+1. 자바스크립트 빌드 자동화 툴이다. (gulp.js)
 2. js파일을 수정 할 때 마다 서버를 재시작 할 수 있다.
 
-clone 받을시 npm insatll 또는 yarn 후에 gulp start를 하면 실행 할 수 있음. 안될시 아래 babel과 gulp를 설치해주길 바람.
+clone 받을시 npm insatll 또는 yarn 후에 gulp start를 하면 실행 할 수 있음. 안될시 아래 babel과 gulp를 설치해주길 바람. <br/>
+es6를 es5로 트랜스파일링 지원. <br/>
+자바스크립트를 경량화 및 난독화 지원. <br/>
+
+gulp start 하면 빌드를 시작. (dist/main.js)
 
 * package.json 생성
     * npm init -y // package.json 생성

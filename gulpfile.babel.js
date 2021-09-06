@@ -16,6 +16,10 @@ import concat from 'gulp-concat';
 import cssminify from 'gulp-minify-css';
 import htmlminify from 'gulp-minify-html';
 import browserSync from 'browser-sync';
+//gulp es6 => es5 변환
+import babel from 'gulp-babel';
+//gulp 난독화 작업
+import obfuscator from 'gulp-javascript-obfuscator';
 
 //gulp.task 메서드는 새로운 gulp task를 등록해주는 역할을 한다. 첫번쨰 파라미터에 task 이름, 두번째 파라미터에 실제 작업할 내용이 함수가 위치하게 된다.
 // gulp.task('default', () => {
@@ -35,6 +39,7 @@ gulp.task('world', () => {
 gulp.task('uglifyes', () => {
 	return gulp.src('src/*.js') // src 폴더 아래의 모든 js파일을
 		.pipe(uglifyes()) // minify(경량화) 해서
+    .pipe(babel())
     .pipe(gulp.dest('dist')); // dist 폴더에 저장.
 });
 
@@ -88,6 +93,12 @@ gulp.task('brouglify', () => {
   return gulp.src('src/*.js')
     .pipe(concat('main.js'))
     .pipe(uglifyes())
+    // es6 => es5
+    .pipe(babel())
+    // 난독화 추가
+    .pipe(obfuscator({
+      compact: true
+    }))
     .pipe(gulp.dest('dist'))
     .pipe(browserSync.reload({stream:true}));
 });

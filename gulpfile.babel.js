@@ -26,51 +26,50 @@ import obfuscator from 'gulp-javascript-obfuscator';
 //     return console.log("Gulp is running");
 // });
 
-gulp.task('hello', () => {
-	return console.log("hello world!");
-});
+// gulp.task('hello', () => {
+// 	return console.log("hello world!");
+// });
 
-gulp.task('world', () => {
-	return console.log("World");
-});
+// gulp.task('world', () => {
+// 	return console.log("World");
+// });
 
 //자바스크립트 경량화
 //자바스크립트 파일에 포함된 주석, 공백 등을 제거하고 변수명 등을 짧게 바꾸는 등의 작업을 거쳐 용량을 줄이고 보다 빠르게 해석할 수 있도록 도와주게 합니다.
-gulp.task('uglifyes', () => {
-	return gulp.src('src/*.js') // src 폴더 아래의 모든 js파일을
-		.pipe(uglifyes()) // minify(경량화) 해서
-    .pipe(babel())
-    .pipe(gulp.dest('dist')); // dist 폴더에 저장.
-});
+// gulp.task('uglifyes', () => {
+// 	return gulp.src('src/*.js') // src 폴더 아래의 모든 js파일을
+// 		.pipe(uglifyes()) // minify(경량화) 해서
+//     .pipe(gulp.dest('dist')); // dist 폴더에 저장.
+// });
 
 /*
     매번 gulp를 타이핑해서 task를 실행시켜 minify하는 방법은 비효율적이고 귀찮은 일입니다.
     이런 경우를 위해 파일에 변경이 있을 때마다 변경을 감지해서 task를 실행할 수 있는 기능을 gulp.watch 라는 메서드로 제공 해주고 있습니다.
 */
 
-gulp.task('watch',() => {
-    gulp.watch('src/*.js', gulp.series('uglifyes'));
-});
+// gulp.task('watch',() => {
+//     gulp.watch('src/*.js', gulp.series('uglifyes'));
+// });
 
 //series 사용 임의로 task들을 실행. series와 parallel을 조합하여 task들을 조합 할 수 있다.
-const demo = gulp.series(gulp.parallel('uglifyes', 'watch'));
-gulp.task('default', demo);
+// const demo = gulp.series(gulp.parallel('uglifyes', 'watch'));
+// gulp.task('default', demo);
 
 // minify된 파일들을 하나의 파일로 만들어서 배포하는 방법.
-gulp.task('concat', () => {
-	return gulp.src('src/*.js') // src 폴더 아래의 모든 js파일을
-    .pipe(concat('main.js')) // main.js라는 파일명으로 모두 병합한 뒤에
-    // .pipe(uglify()) // minify(경량화) 해서
-    .pipe(uglifyes()) // minify(경량화) 해서
-    .pipe(gulp.dest('total')); // total 폴더에 저장.
-});
+// gulp.task('concat', () => {
+// 	return gulp.src('src/*.js') // src 폴더 아래의 모든 js파일을
+//     .pipe(concat('main.js')) // main.js라는 파일명으로 모두 병합한 뒤에
+//     // .pipe(uglify()) // minify(경량화) 해서
+//     .pipe(uglifyes()) // minify(경량화) 해서
+//     // .pipe(gulp.dest('total')); // total 폴더에 저장. (total 폴더 삭제, 필요하다면 만드시오.)
+// });
 
 //css파일 minify
-gulp.task('cssminify', () => {
-  return gulp.src('src/css/main.css') // src/css 폴더의 main.css 파일을
-    .pipe(cssminify()) // minify해서
-    .pipe(gulp.dest('dist/css')); // dist/css 폴더에 저장
-});
+// gulp.task('cssminify', () => {
+//   return gulp.src('src/css/main.css') // src/css 폴더의 main.css 파일을
+//     .pipe(cssminify()) // minify해서
+//     .pipe(gulp.dest('dist/css')); // dist/css 폴더에 저장
+// });
 
 //BrowserSync로 미니 서버를 띄워서 작업하기
 /*
@@ -89,6 +88,7 @@ gulp.task('brominifyhtml', () => {
 });
 
 //javascript 파일을 minify uglifyes()로 자바스크립트를 통합시키고 경량화함
+//해당 구간이 핵심. concat => uglifyes => babel => obfuscator => dest => browerSync
 gulp.task('brouglify', () => {
   return gulp.src('src/*.js')
     .pipe(concat('main.js'))
